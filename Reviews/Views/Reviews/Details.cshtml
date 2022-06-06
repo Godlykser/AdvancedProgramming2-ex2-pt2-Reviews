@@ -1,0 +1,16 @@
+﻿@model Reviews.Models.Review
+
+@{
+    ViewData["Title"] = "Details";
+}
+<h1>Review Details</h1>
+
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">@Html.DisplayFor(model => model.Username)'s review</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Score: @Html.DisplayFor(model => model.Score)</h6>
+    <p class="card-text">@Html.DisplayFor(model => model.Feedback)</p>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+  </div>
+</div>

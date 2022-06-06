@@ -1,0 +1,104 @@
+﻿@model IEnumerable<Reviews.Models.Review>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<link rel="stylesheet" href="/css/index.css" />
+
+<p>
+    <!-- a logo as well-->
+    <h1>WhatsApp Reviews</h1>
+    <h5 class="mb-2 text-muted">Average Score: @ViewBag.AverageScore</h5>
+</p>
+<form asp-action="Index">
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <button class="btn btn-outline-secondary" type="submit">Search</button>
+        </div>
+        <input type="text"
+               name="query"
+               id="search"
+               class="form-control"
+               placeholder="Review title or author..."
+               aria-describedby="basic-addon1"
+               style="text-align:left;">
+    </div>
+</form>
+
+
+
+<table class="table gridtable" style="table-layout:fixed">
+    <thead>
+        <tr>
+            <th scope="col" width="10vw">
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Score)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Feedback)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Score)
+                </td>
+                <td class="feedback">
+                    @Html.DisplayFor(modelItem => item.Feedback)
+                </td>
+                <td>
+                    <a class="btn btn-secondary" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    <a class="btn btn-secondary" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="right-child-element">
+    <a class="btn btn-primary" asp-action="Create">Create New</a>
+</div>
+<br />
+
+@section Scripts {
+
+    <script type="text/html" id="template">
+        <tr>
+            <td>
+                {username}
+            </td>
+            <td>
+                {date}
+            </td>
+            <td>
+                {score}
+            </td>
+            <td>
+                {feedback}
+            </td>
+            <td>
+            <a class="btn btn-secondary" asp-action="Edit" asp-route-id="{id}">Edit</a>
+            <a class="btn btn-secondary" asp-action="Details" asp-route-id="{id}">Details</a>
+            <a class="btn btn-danger" asp-action="Delete" asp-route-id="{id}">Delete</a>
+            </td>
+        </tr>
+    </script>
+
+    <script src="~/js/search.js"></script>
+}

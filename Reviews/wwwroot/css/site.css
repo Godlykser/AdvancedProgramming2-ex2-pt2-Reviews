@@ -1,0 +1,39 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+  background: url("/images/background1.png");
+  background-size:cover;
+  background-repeat: no-repeat;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.container {
+    padding: 10px;
+    margin-top: 5rem;
+    background-color: white;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.feedback {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

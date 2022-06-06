@@ -1,0 +1,17 @@
+﻿* {
+    text-align:center;
+}
+.float-parent-element {
+    width: 50%;
+    display: flex;
+}
+
+.left-child-element {
+    display: inline-block;
+    float:left;
+}
+
+.right-child-element {
+    display: inline-block;
+    float: right
+}
